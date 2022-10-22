@@ -19,11 +19,19 @@ export class TodoListComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  public setEmitTaskList(event: string) {
+    this.taskList.push({ task: event, checked: false })
+  }
+
   public deleteItemTaskList(event: number) {
     this.taskList.splice(event, 1);
   }
   public deleteAllTaskList() {
-    this.taskList = [];
+    const confirm = window.confirm("Deseja apagar tudo?");
+    if (confirm) {
+      this.taskList = [];
+    }
   }
+
 
 }
